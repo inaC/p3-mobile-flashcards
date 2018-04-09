@@ -1,7 +1,9 @@
 import React from 'react';
 import { Text, TextInput, StyleSheet, KeyboardAvoidingView, Alert } from 'react-native';
+import { connect } from 'react-redux';
 import TexButton from './TextButton';
-import { getDeckTitles, saveDeckTitle } from '../utils/api';
+import { getDeckTitles, saveDeckTitle, getDeck } from '../utils/api';
+import { addDeck } from '../actions/index';
 
 class AddDeck extends React.Component {
   state = {
@@ -24,6 +26,8 @@ class AddDeck extends React.Component {
     else {
       saveDeckTitle({ title: trimmedTitle })
         .then(this.fetchAlreadyUsedTitles)
+        .then(() => getDeck({ title: trimmedTitle }))
+        .then(deck =>this.props.submitDeck(deck))
         .then(() => Alert.alert('Success!', `Deck "${trimmedTitle}" created!`));
     }
   }
@@ -76,4 +80,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddDeck;
+const mapDispatchToProps = dispatch => ({
+  submitDeck: deck => dispatch(addDeck(deck)),
+});
+
+export default connect(null, mapDispatchToProps)(AddDeck);

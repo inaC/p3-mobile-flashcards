@@ -1,26 +1,25 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { getDecks, getDeck, getDeckTitles } from '../utils/api';
+import { StyleSheet, View, FlatList } from 'react-native';
+import { connect } from 'react-redux';
+import { getDecks } from '../utils/api';
+import { receiveDecks } from '../actions/index';
+import Deck from './Deck';
 
-export default class App extends React.Component {
-  state = {
-    deck: null,
-    foundDeck: null,
-    deckTitles: null
-  }
+class DeckList extends React.Component {
   componentDidMount() {
     getDecks()
-      .then(results => this.setState({deck: results}))
-      .then(() => getDeck({ title: 'Teste' }).then(r => this.setState({ foundDeck: r})))
-      .then(() => getDeckTitles().then(r => this.setState({ deckTitles: r})));
+      .then(results => this.props.retrieveDecks(results));
   }
+
+  renderDeck = ({ item }) => (
+    <Deck key={item.title} title={item.title} numberOfCards={item.questions.length}/>
+  )
+
   render() {
-    const { deck, foundDeck, deckTitles } = this.state;
+    const { decksArray } = this.props;
     return (
       <View style={styles.container}>
-        <Text> Deck: {JSON.stringify(deck)} </Text>
-        <Text> FoundDeck: {JSON.stringify(foundDeck)} </Text>
-        <Text> DeckTitle: {JSON.stringify(deckTitles)} </Text>
+        <FlatList data={decksArray} renderItem={this.renderDeck} />
       </View>
     );
   }
@@ -30,7 +29,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
 });
+
+const mapStateToProps = state => ({
+  decksArray: Object.keys(state || {}).map(title => state[title]),
+});
+
+const mapDispatchToProps = dispatch => ({
+  retrieveDecks: decks => dispatch(receiveDecks(decks)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeckList);
