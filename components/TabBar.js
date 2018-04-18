@@ -6,6 +6,7 @@ import AddDeck from './AddDeck';
 import AddCard from './AddCard';
 import DeckList from './DeckList';
 import DeckDetail from './DeckDetail';
+import Quiz from './Quiz';
 
 const tabBarObject = {
   Decks: {
@@ -65,6 +66,17 @@ const stackRoutes = {
     screen: AddCard,
     navigationOptions: {
       title: 'Add Card To Deck',
+      justifyContents: 'flex-start',
+      headerTintColor: 'black',
+      headerTitleStyle: {
+        alignSelf: 'center',
+      },
+    },
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      title: 'Quiz',
       justifyContents: 'flex-start',
       headerTintColor: 'black',
       headerTitleStyle: {

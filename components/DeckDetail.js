@@ -27,7 +27,7 @@ class DeckDetail extends React.Component {
             messageStyle={{fontSize: 20}}
             defaultColor='rgb(0, 188, 212)'
             onPressColor='red'
-            onPress={() => Alert.alert('quiz started!')}
+            onPress={() => this.props.navigation.navigate('Quiz', { title: title })}
             disabledColor='rgb(236, 236, 236)'
           />
         </View>
