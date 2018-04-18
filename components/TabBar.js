@@ -1,15 +1,17 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import AddDeck from './AddDeck';
+import AddCard from './AddCard';
 import DeckList from './DeckList';
+import DeckDetail from './DeckDetail';
 
 const tabBarObject = {
   Decks: {
     screen: DeckList,
     navigationOptions: {
-      tabBarLabel: 'Mocked Decks',
+      tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor, focused }) => <Ionicons name={`ios-list-box${focused ? '' : '-outline'}`} size={30} color={tintColor} />,
     },
   },
@@ -23,6 +25,9 @@ const tabBarObject = {
 };
 
 const options = {
+  navigationOptions: {
+    header: null,
+  },
   tabBarOptions: {
     activeTintColor: Platform.OS === 'ios' ? 'rgb(106,85,172)' : 'white',
     style: {
@@ -41,4 +46,34 @@ const options = {
 
 const TabBar = TabNavigator(tabBarObject, options);
 
-export default TabBar;
+const stackRoutes = {
+  Home: {
+    screen: TabBar,
+  },
+  DeckDetail: {
+    screen: DeckDetail,
+    navigationOptions: {
+      title: 'Deck Details',
+      justifyContents: 'flex-start',
+      headerTintColor: 'black',
+      headerTitleStyle: {
+        alignSelf: 'center',
+      },
+    },
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: 'Add Card To Deck',
+      justifyContents: 'flex-start',
+      headerTintColor: 'black',
+      headerTitleStyle: {
+        alignSelf: 'center',
+      },
+    },
+  },
+};
+
+const MainNavigator = StackNavigator(stackRoutes);
+
+export default MainNavigator;
