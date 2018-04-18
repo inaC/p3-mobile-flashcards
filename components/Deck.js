@@ -7,7 +7,7 @@ class Deck extends React.Component {
     return (
       <View style={[styles.item, Platform.OS === 'ios' ? styles.shadowIos : styles.shadowAndroid]}>
         <Text style={{textAlign: 'center', fontSize: 20}}> {title} </Text>
-        <Text style={{textAlign: 'center'}}> {numberOfCards} cards </Text>
+        <Text style={{textAlign: 'center'}}> {numberOfCards} {`card${numberOfCards > 0 ? 's' : ''}`} </Text>
       </View>
     );
   }
