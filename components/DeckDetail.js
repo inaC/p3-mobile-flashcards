@@ -27,7 +27,8 @@ class DeckDetail extends React.Component {
             messageStyle={{fontSize: 20}}
             defaultColor='rgb(0, 188, 212)'
             onPressColor='red'
-            onPress={() => this.props.navigation.navigate('Quiz', { title: title })}
+            disabled={numberOfCards === 0}
+            onPress={() => numberOfCards > 0 ? this.props.navigation.navigate('Quiz', { title: title }) : Alert.alert('You must have at least 1 card to start the quiz')}
             disabledColor='rgb(236, 236, 236)'
           />
         </View>

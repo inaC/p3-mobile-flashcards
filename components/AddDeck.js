@@ -28,7 +28,8 @@ class AddDeck extends React.Component {
         .then(this.fetchAlreadyUsedTitles)
         .then(() => getDeck({ title: trimmedTitle }))
         .then(deck =>this.props.submitDeck(deck))
-        .then(() => Alert.alert('Success!', `Deck "${trimmedTitle}" created!`));
+        .then(() => Alert.alert('Success!', `Deck "${trimmedTitle}" created!`))
+        .then(() => this.setState({deckTitle: ''}));
     }
   }
 
