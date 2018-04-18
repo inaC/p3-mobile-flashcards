@@ -17,7 +17,7 @@ export const getDeck = ({ title }) => (
   getDecks().then(results => results[title])
 );
 
-export const addCardToDeck = ({ title, card }) => (
+export const saveCardToDeck = ({ title, card }) => (
   getDeck({ title }).then((result) => {
     result.questions.push(card);
     AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({ [title]: result }));
