@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { getDecks } from '../utils/api';
 import { receiveDecks } from '../actions/index';
@@ -12,7 +12,9 @@ class DeckList extends React.Component {
   }
 
   renderDeck = ({ item }) => (
-    <Deck key={item.title} title={item.title} numberOfCards={item.questions.length}/>
+    <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetail', { title: item.title })}>
+      <Deck key={item.title} title={item.title} numberOfCards={item.questions.length}/>
+    </TouchableOpacity>
   )
 
   render() {
