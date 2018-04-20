@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import TextButton from './TextButton';
-
+import { clearLocalNotification, setLocalNotification} from '../utils/localNotification';
 class Quiz extends React.Component {
   state = {
     currentQuestion: 0,
@@ -69,19 +69,23 @@ class Quiz extends React.Component {
       />
     </View>
   )
-  renderFinalScore = (correctCount, totalQuestions) => (
-    <View style={{flex: 1, marginTop: 20}}>
-      <Text style={[styles.title, {alignSelf: 'flex-start'}]}> {correctCount}/{totalQuestions} correctly answered!</Text>
-      <TextButton
-        message='Restart Quiz'
-        messageStyle={{fontSize: 20}}
-        defaultColor='rgb(0, 188, 212)'
-        onPressColor='red'
-        onPress={this.restartQuiz}
-        disabledColor='rgb(236, 236, 236)'
-      />
-    </View>
-  )
+  renderFinalScore = (correctCount, totalQuestions) => {
+    clearLocalNotification()
+      .then(setLocalNotification);
+
+    return (
+      <View style={{flex: 1, marginTop: 20}}>
+        <Text style={[styles.title, {alignSelf: 'flex-start'}]}> {correctCount}/{totalQuestions} correctly answered!</Text>
+        <TextButton
+          message='Restart Quiz'
+          messageStyle={{fontSize: 20}}
+          defaultColor='rgb(0, 188, 212)'
+          onPressColor='red'
+          onPress={this.restartQuiz}
+          disabledColor='rgb(236, 236, 236)'
+        />
+      </View>
+  )}
 
   renderQuestion = (currentQuestion, totalQuestions, showAnswer, deck) => (
     <View style={{flex: 1, marginTop: 20}}>

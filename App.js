@@ -4,8 +4,12 @@ import { Provider } from 'react-redux';
 import MainNavigator from './components/TabBar';
 import MainStatusBar from './components/MainStatusBar';
 import configureStore from './store/configureStore';
+import { setLocalNotification } from './utils/localNotification';
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
   render() {
     return (
       <Provider store={configureStore()}>
