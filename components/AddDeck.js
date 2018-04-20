@@ -27,19 +27,19 @@ class AddDeck extends React.Component {
       saveDeckTitle({ title: trimmedTitle })
         .then(this.fetchAlreadyUsedTitles)
         .then(() => getDeck({ title: trimmedTitle }))
-        .then(deck =>this.props.submitDeck(deck))
+        .then(deck => this.props.submitDeck(deck))
         .then(() => Alert.alert('Success!', `Deck "${trimmedTitle}" created!`))
-        .then(() => this.setState({deckTitle: ''}));
+        .then(() => this.setState({ deckTitle: '' }));
     }
   }
 
   renderSubmitButton = () => (
     <TexButton
-      message='Submit'
-      messageStyle={{fontSize: 20}}
-      defaultColor='rgb(0, 188, 212)'
+      message="Submit"
+      messageStyle={{ fontSize: 20 }}
+      defaultColor="rgb(0, 188, 212)"
       disabled={this.state.deckTitle.trim().length === 0}
-      disabledColor='rgb(236, 236, 236)'
+      disabledColor="rgb(236, 236, 236)"
       onPress={this.submitNewDeck}
     />
   )
@@ -47,12 +47,12 @@ class AddDeck extends React.Component {
   render() {
     const { deckTitle, alreadyUsedTitles } = this.state;
     return (
-      <KeyboardAvoidingView behavior='padding' style = {styles.container}>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <Text style={styles.title}> What is the title of your new deck? </Text>
         <TextInput
           value={deckTitle}
           style={styles.textInput}
-          placeholder='Enter deck title'
+          placeholder="Enter deck title"
           onChangeText={this.setDeckTitle}
         />
         {alreadyUsedTitles && this.renderSubmitButton()}

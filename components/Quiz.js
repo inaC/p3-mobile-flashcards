@@ -35,35 +35,35 @@ class Quiz extends React.Component {
 
 
   renderAnswerWithFeedBack = answer => (
-    <View style={{flex: 1}}>
-      <Text style={{textAlign: 'center', fontSize: 30}}> {answer} </Text>
-      <View style={{flex: 1, marginTop: 20}}>
+    <View style={{ flex: 1 }}>
+      <Text style={{ textAlign: 'center', fontSize: 30 }}> {answer} </Text>
+      <View style={{ flex: 1, marginTop: 20 }}>
         <TextButton
-          message='Correct'
-          messageStyle={{fontSize: 20}}
-          defaultColor='green'
+          message="Correct"
+          messageStyle={{ fontSize: 20 }}
+          defaultColor="green"
           onPress={() => this.showNextQuestion(true)}
-          disabledColor='rgb(236, 236, 236)'
+          disabledColor="rgb(236, 236, 236)"
         />
         <TextButton
-          message='Wrong'
-          messageStyle={{fontSize: 20}}
-          defaultColor='red'
+          message="Wrong"
+          messageStyle={{ fontSize: 20 }}
+          defaultColor="red"
           onPress={() => this.showNextQuestion(false)}
-          disabledColor='rgb(236, 236, 236)'
+          disabledColor="rgb(236, 236, 236)"
         />
       </View>
     </View>
   )
 
   renderShowAnswerButton = () => (
-    <View style={{flex: 1, marginTop: 20}}>
+    <View style={{ flex: 1, marginTop: 20 }}>
       <TextButton
-        message='Show Answer'
-        messageStyle={{fontSize: 20}}
-        defaultColor='rgb(0, 188, 212)'
+        message="Show Answer"
+        messageStyle={{ fontSize: 20 }}
+        defaultColor="rgb(0, 188, 212)"
         onPress={this.showAnswer}
-        disabledColor='rgb(236, 236, 236)'
+        disabledColor="rgb(236, 236, 236)"
       />
     </View>
   )
@@ -72,22 +72,22 @@ class Quiz extends React.Component {
       .then(setLocalNotification);
 
     return (
-      <View style={{flex: 1, marginTop: 20}}>
-        <Text style={[styles.title, {alignSelf: 'flex-start'}]}> {correctCount}/{totalQuestions} correctly answered!</Text>
+      <View style={{ flex: 1, marginTop: 20 }}>
+        <Text style={[styles.title, { alignSelf: 'flex-start' }]}> {correctCount}/{totalQuestions} correctly answered!</Text>
         <TextButton
-          message='Restart Quiz'
-          messageStyle={{fontSize: 20}}
-          defaultColor='rgb(0, 188, 212)'
+          message="Restart Quiz"
+          messageStyle={{ fontSize: 20 }}
+          defaultColor="rgb(0, 188, 212)"
           onPress={this.restartQuiz}
-          disabledColor='rgb(236, 236, 236)'
+          disabledColor="rgb(236, 236, 236)"
         />
-      </View>
-  )}
+      </View>);
+  }
 
   renderQuestion = (currentQuestion, totalQuestions, showAnswer, deck) => (
-    <View style={{flex: 1, marginTop: 20}}>
-      <Text style={[styles.title, {alignSelf: 'flex-start'}]}> {currentQuestion + 1}/{totalQuestions} </Text>
-        <Text style={{textAlign: 'center', fontSize: 30}}> {deck.questions[currentQuestion].question} </Text>
+    <View style={{ flex: 1, marginTop: 20 }}>
+      <Text style={[styles.title, { alignSelf: 'flex-start' }]}> {currentQuestion + 1}/{totalQuestions} </Text>
+        <Text style={{ textAlign: 'center', fontSize: 30 }}> {deck.questions[currentQuestion].question} </Text>
         {showAnswer ? this.renderAnswerWithFeedBack(deck.questions[currentQuestion].answer) : this.renderShowAnswerButton()}
     </View>
   )

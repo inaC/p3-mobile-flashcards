@@ -20,16 +20,16 @@ class DeckList extends React.Component {
   )
 
   renderNoDeckFound = () => (
-    <ScrollView contentContainerStyle={{flex:1}}>
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Entypo name='emoji-sad' size={120} color='rgb(106,85,172)'/>
-        <Text style={{textAlign: 'center', fontSize: 30, color: 'rgb(106,85,172)'}}> No deck created yet </Text>
+    <ScrollView contentContainerStyle={{ flex:1 }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Entypo name="emoji-sad" size={120} color="rgb(106,85,172)" />
+        <Text style={{ textAlign: 'center', fontSize: 30, color: 'rgb(106,85,172)' }}> No deck created yet </Text>
         <TextButton
-          message='Add Deck'
-          messageStyle={{fontSize: 20}}
-          defaultColor='rgb(0, 188, 212)'
+          message="Add Deck"
+          messageStyle={{ fontSize: 20 }}
+          defaultColor="rgb(0, 188, 212)"
           onPress={() => this.props.navigation.navigate('AddDeck')}
-          disabledColor='rgb(236, 236, 236)'
+          disabledColor="rgb(236, 236, 236)"
         />
       </View>
     </ScrollView>

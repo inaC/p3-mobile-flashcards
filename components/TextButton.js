@@ -23,7 +23,7 @@ const TextButton = ({ message, messageStyle={}, defaultColor, onPress, disabled,
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled}
-      style={[styles.button, {backgroundColor: disabled ? disabledColor : defaultColor}]}
+      style={[styles.button, { backgroundColor: disabled ? disabledColor : defaultColor }]}
     >
       <Text style={[styles.buttonText, messageStyle]}> {message} </Text>
     </TouchableOpacity>
