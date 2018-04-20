@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { Entypo } from '@expo/vector-icons';
 import { getDecks } from '../utils/api';
 import { receiveDecks } from '../actions/index';
 import Deck from './Deck';
+import TextButton from './TextButton';
 
 class DeckList extends React.Component {
   componentDidMount() {
@@ -17,11 +19,31 @@ class DeckList extends React.Component {
     </TouchableOpacity>
   )
 
+  renderNoDeckFound = () => (
+    <ScrollView contentContainerStyle={{flex:1}}>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Entypo name='emoji-sad' size={120} color='rgb(106,85,172)'/>
+        <Text style={{textAlign: 'center', fontSize: 30, color: 'rgb(106,85,172)'}}> No deck created yet </Text>
+        <TextButton
+          message='Add Deck'
+          messageStyle={{fontSize: 20}}
+          defaultColor='rgb(0, 188, 212)'
+          onPress={() => this.props.navigation.navigate('AddDeck')}
+          disabledColor='rgb(236, 236, 236)'
+        />
+      </View>
+    </ScrollView>
+  )
+
   render() {
     const { decksArray } = this.props;
+
     return (
       <View style={styles.container}>
-        <FlatList data={decksArray} renderItem={this.renderDeck} />
+        {decksArray.length === 0 ?
+          this.renderNoDeckFound() :
+          <FlatList data={decksArray} renderItem={this.renderDeck} />}
+
       </View>
     );
   }
