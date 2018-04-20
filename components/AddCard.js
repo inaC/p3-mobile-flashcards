@@ -25,10 +25,9 @@ class AddCard extends React.Component {
   }
   renderSubmitButton = () => (
     <TexButton
-      message={`Submit Card to ${this.props.navigation.state.params.title}`}
+      message='Submit Card'
       messageStyle={{fontSize: 20}}
       defaultColor='rgb(0, 188, 212)'
-      onPressColor='red'
       disabled={(this.state.question.trim().length * this.state.answer.trim().length) === 0}
       disabledColor='rgb(236, 236, 236)'
       onPress={this.submitNewCard}

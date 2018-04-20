@@ -28,7 +28,6 @@ class DeckList extends React.Component {
           message='Add Deck'
           messageStyle={{fontSize: 20}}
           defaultColor='rgb(0, 188, 212)'
-          onPressColor='red'
           onPress={() => this.props.navigation.navigate('AddDeck')}
           disabledColor='rgb(236, 236, 236)'
         />

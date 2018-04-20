@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import TextButton from './TextButton';
-import { clearLocalNotification, setLocalNotification} from '../utils/localNotification';
+import { clearLocalNotification, setLocalNotification } from '../utils/localNotification';
+
 class Quiz extends React.Component {
   state = {
     currentQuestion: 0,
@@ -41,7 +42,6 @@ class Quiz extends React.Component {
           message='Correct'
           messageStyle={{fontSize: 20}}
           defaultColor='green'
-          onPressColor='red'
           onPress={() => this.showNextQuestion(true)}
           disabledColor='rgb(236, 236, 236)'
         />
@@ -49,7 +49,6 @@ class Quiz extends React.Component {
           message='Wrong'
           messageStyle={{fontSize: 20}}
           defaultColor='red'
-          onPressColor='red'
           onPress={() => this.showNextQuestion(false)}
           disabledColor='rgb(236, 236, 236)'
         />
@@ -63,7 +62,6 @@ class Quiz extends React.Component {
         message='Show Answer'
         messageStyle={{fontSize: 20}}
         defaultColor='rgb(0, 188, 212)'
-        onPressColor='red'
         onPress={this.showAnswer}
         disabledColor='rgb(236, 236, 236)'
       />
@@ -80,7 +78,6 @@ class Quiz extends React.Component {
           message='Restart Quiz'
           messageStyle={{fontSize: 20}}
           defaultColor='rgb(0, 188, 212)'
-          onPressColor='red'
           onPress={this.restartQuiz}
           disabledColor='rgb(236, 236, 236)'
         />
@@ -101,12 +98,14 @@ class Quiz extends React.Component {
     const { currentQuestion, showAnswer, correctCount } = this.state;
     const showScore = currentQuestion === totalQuestions;
     return (
-      <View style={styles.container}>
-        { showScore ?
-          this.renderFinalScore(correctCount, totalQuestions) :
-          this.renderQuestion(currentQuestion, totalQuestions, showAnswer, deck)
-        }
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          { showScore ?
+            this.renderFinalScore(correctCount, totalQuestions) :
+            this.renderQuestion(currentQuestion, totalQuestions, showAnswer, deck)
+          }
+        </View>
+      </ScrollView>
     );
   }
 }

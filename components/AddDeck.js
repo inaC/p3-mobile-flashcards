@@ -38,7 +38,6 @@ class AddDeck extends React.Component {
       message='Submit'
       messageStyle={{fontSize: 20}}
       defaultColor='rgb(0, 188, 212)'
-      onPressColor='red'
       disabled={this.state.deckTitle.trim().length === 0}
       disabledColor='rgb(236, 236, 236)'
       onPress={this.submitNewDeck}
