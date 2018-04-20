@@ -25,11 +25,11 @@ class AddCard extends React.Component {
   }
   renderSubmitButton = () => (
     <TexButton
-      message='Submit Card'
-      messageStyle={{fontSize: 20}}
-      defaultColor='rgb(0, 188, 212)'
+      message="Submit Card"
+      messageStyle={{ fontSize: 20 }}
+      defaultColor="rgb(0, 188, 212)"
       disabled={(this.state.question.trim().length * this.state.answer.trim().length) === 0}
-      disabledColor='rgb(236, 236, 236)'
+      disabledColor="rgb(236, 236, 236)"
       onPress={this.submitNewCard}
     />
   )
@@ -39,7 +39,7 @@ class AddCard extends React.Component {
     const { title } = this.props.navigation.state.params;
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <Text style={[styles.title, {alignSelf: 'flex-start'}]}> Question </Text>
+        <Text style={[styles.title, { alignSelf: 'flex-start' }]}> Question </Text>
         <TextInput
           value={question}
           style={[styles.textInput, Platform.OS === 'ios' ? styles.textInputIos : {}]}

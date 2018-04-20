@@ -1,17 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 
-class Deck extends React.Component {
-  render() {
-    const { title, numberOfCards } = this.props;
-    return (
-      <View style={[styles.item, Platform.OS === 'ios' ? styles.shadowIos : styles.shadowAndroid]}>
-        <Text style={{textAlign: 'center', fontSize: 20}}> {title} </Text>
-        <Text style={{textAlign: 'center'}}> {numberOfCards} {`card${numberOfCards > 0 ? 's' : ''}`} </Text>
-      </View>
-    );
-  }
-}
+const Deck = (props) => {
+  const { title, numberOfCards } = props;
+  return (
+    <View style={[styles.item, Platform.OS === 'ios' ? styles.shadowIos : styles.shadowAndroid]}>
+      <Text style={{ textAlign: 'center', fontSize: 20 }}> {title} </Text>
+      <Text style={{ textAlign: 'center' }}> {numberOfCards} {`card${numberOfCards > 0 ? 's' : ''}`} </Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   item: {
