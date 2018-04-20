@@ -20,7 +20,7 @@ class DeckList extends React.Component {
   )
 
   renderNoDeckFound = () => (
-    <ScrollView contentContainerStyle={{ flex:1 }}>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Entypo name="emoji-sad" size={120} color="rgb(106,85,172)" />
         <Text style={{ textAlign: 'center', fontSize: 30, color: 'rgb(106,85,172)' }}> No deck created yet </Text>

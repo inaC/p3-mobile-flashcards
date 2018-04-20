@@ -73,12 +73,19 @@ class Quiz extends React.Component {
 
     return (
       <View style={{ flex: 1, marginTop: 20 }}>
-        <Text style={[styles.title, { alignSelf: 'flex-start' }]}> {correctCount}/{totalQuestions} correctly answered!</Text>
+        <Text style={[styles.title, { alignSelf: 'center' }]}> {correctCount}/{totalQuestions} correctly answered!</Text>
         <TextButton
           message="Restart Quiz"
           messageStyle={{ fontSize: 20 }}
           defaultColor="rgb(0, 188, 212)"
           onPress={this.restartQuiz}
+          disabledColor="rgb(236, 236, 236)"
+        />
+        <TextButton
+          message="Back To Deck"
+          messageStyle={{ fontSize: 20 }}
+          defaultColor="rgb(0, 188, 212)"
+          onPress={() => this.props.navigation.goBack()}
           disabledColor="rgb(236, 236, 236)"
         />
       </View>);
