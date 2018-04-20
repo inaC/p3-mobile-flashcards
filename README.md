@@ -1,6 +1,6 @@
-# MyReads Project
+# Mobile Flashcards Project
 
-This project corresponds to the first Udacity's React Fundamentals course. It used the provided starter template as a starting point.
+This project corresponds to the last Udacity's React Fundamentals course, whose goal is to make use of React Native.
 
 ## TL;DR
 
