@@ -1,6 +1,6 @@
 # Mobile Flashcards Project
 
-This project corresponds to the last Udacity's React Fundamentals course, whose goal is to make use of React Native.
+This project corresponds to the last Udacity's React Fundamentals course, whose goal is to make use of React Native. The app was used and tested on an Android smartphone.
 
 ## TL;DR
 
