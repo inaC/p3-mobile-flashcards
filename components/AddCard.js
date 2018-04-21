@@ -21,7 +21,9 @@ class AddCard extends React.Component {
     const card = { question, answer };
     saveCardToDeck({ title, card })
       .then(() => this.props.submitCard(title, card))
-      .then(() => Alert.alert('Success!', `Card added to '${title}'' deck!`));
+      .then(() => Alert.alert('Success!', `Card added to '${title}'' deck!`))
+      .then(() => this.setState({ question: '', answer: '' }))
+      .then(() => this.props.navigation.goBack());
   }
   renderSubmitButton = () => (
     <TexButton
